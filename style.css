@@ -1,0 +1,106 @@
+:root {
+    --clr: #00ff00; /* Начальный цвет */
+    transition: all 3s ease; /* Плавная смена цвета */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    background: #000;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 300px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.cloud {
+    position: relative;
+    width: 160px; /* Ширина облака */
+    height: 90px; /* Высота облака */
+    background: var(--clr);
+    border-radius: 200px 200px 0 0; /* Выпуклая верхняя часть (верхний левый и правый углы) */
+    box-shadow: 0 0 35px var(--clr);
+    margin: 0 auto;
+    top: -20px; /* Поднимаем вверх */
+    transition: background 3s ease, box-shadow 3s ease; /* Плавный переход фона облака */
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: var(--clr);
+    border-radius: 100px;
+    transition: background 3s ease; /* Плавный переход фона облака */
+}
+
+.cloud::before {
+    width: 70px; /* Размер первой части облака */
+    height: 60px;
+    top: 30px; /* Поднимаем вверх */
+    left: -22px;  /* Сдвиг влево */
+}
+
+.cloud::after {
+    width: 120px; /* Размер второй части облака */
+    height: 110px; /* Размер второй части облака */
+    top: -20px; /* Поднимаем вверх */
+    right: -45px; /* Сдвиг вправо */
+}
+
+
+h2 {
+    position: absolute; /* Позиционируем относительно контейнера */
+    margin: 0;
+    top: 80px; /* Расположим его непосредственно под облаком */
+    padding: 5px 10px;
+    width: 180px; /* Сокращена ширина прямоугольника */
+    background: var(--clr);
+    color: #000;
+    border-radius: 10px;
+    font-size: 1.2em;
+    text-align: center;
+    box-shadow: 0 0 15px var(--clr);
+    display: flex;
+    justify-content: center; /* Выравнивание по центру */
+    align-items: center;
+    left: 50%; /* Смещаем по горизонтали на 50% */
+    transform: translateX(-50%); /* Центрируем относительно контейнера */
+    transition: background 3s ease, box-shadow 3s ease; /* Плавный переход фона */
+}
+
+.drop {
+    position: absolute;
+    color: var(--clr);
+    animation: fall linear forwards;
+    width: 24px; /* Ширина капель */
+    left: 50%; /* Начало падения по центру */
+    transform: translateX(-50%); /* Центрируем каплю */
+    transition: color 3s ease; /* Плавное изменение цвета капель */
+}
+
+@keyframes fall {
+    0% {
+        top: 0;
+        opacity: 1;
+    }
+    100% {
+        top: 80vh; /* Падает до 80% экрана */
+        opacity: 1;
+    }
+}
+
+.laying {
+    animation: none;
+    top: 80vh; /* Лежит на 80% экрана (почти внизу) */
+    opacity: 1;
+    transition: color 3s ease 1s; /* Плавное изменение цвета с задержкой */
+}
