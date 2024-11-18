@@ -5,7 +5,7 @@ function randomText() {
 
 function rain() {
     const cloud = document.querySelector('.cloud');
-    const cloudRect = cloud.getBoundingClientRect(); // Получаем размеры и положение облака
+    const cloudRect = cloud.getBoundingClientRect();
 
     const drop = document.createElement('div');
     drop.classList.add('drop');
@@ -14,8 +14,8 @@ function rain() {
     // Центр облака
     const cloudCenter = cloudRect.left + cloudRect.width / 2;
 
-    // Расширяем радиус падения знаков. Мы будем расширять радиус на 180px, а не 160px, как у облака.
-    const left = cloudCenter + Math.random() * 300 - 150; // Расширяем на 180px влево и вправо от центра
+    // Расширяем радиус падения знаков.
+    const left = cloudCenter + Math.random() * 300 - 150;
 
     const size = Math.random() * 1.5;
     const duration = 1 + Math.random() * 0.5;
@@ -30,7 +30,7 @@ function rain() {
         drop.classList.add('laying');
         setTimeout(() => {
             drop.remove();
-        }, 5000); // Лежит 5 секунд
+        }, 5000);
     }, duration * 1000);
 }
 
@@ -39,13 +39,12 @@ setInterval(rain, 40);
 
 // Функция плавной смены цвета
 function setRandomColor() {
-    // Массив ярких "кислотных" цветов
     const brightColors = [
-        "#FF0000", // Ярко-красный
-        "#00FF00", // Кислотно-зеленый
-        "#00FFFF", // Бирюзовый
-        "#FF00FF", // Кислотно-фиолетовый
-        "#FFFF00", // Кислотно-жёлтый
+        "#FF0000",
+        "#00FF00",
+        "#00FFFF",
+        "#FF00FF",
+        "#FFFF00",
         "#00ff00",
     ];
 
@@ -56,7 +55,7 @@ function setRandomColor() {
     // Применяем цвет ко всем каплям, облаку и тексту
     const drops = document.querySelectorAll('.drop');
     drops.forEach(drop => {
-        drop.style.color = randomColor; // Меняем цвет падающих капель
+        drop.style.color = randomColor;
     });
 }
 
