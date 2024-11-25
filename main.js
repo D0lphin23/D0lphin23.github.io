@@ -25,7 +25,7 @@ function rain() {
     drop.style.fontSize = 0.5 + size + 'em';
     drop.style.animationDuration = duration + 's';
 
-    // Капля "лежит" на полу (на 80% экрана), затем удаляется
+    // Нижняя точка падения
     setTimeout(() => {
         drop.classList.add('laying');
         setTimeout(() => {
@@ -48,11 +48,11 @@ function setRandomColor() {
         "#00ff00",
     ];
 
-    // Выбираем случайный цвет
+    // Выбор случайного цвета
     const randomColor = brightColors[Math.floor(Math.random() * brightColors.length)];
     document.documentElement.style.setProperty('--clr', randomColor);
 
-    // Применяем цвет ко всем каплям, облаку и тексту
+    // Применение цвета ко всем элементам
     const drops = document.querySelectorAll('.drop');
     drops.forEach(drop => {
         drop.style.color = randomColor;
